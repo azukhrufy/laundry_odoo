@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_laundry_receipt">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div style="text-align: left;width: 830px;margin: 0px;padding: 13px;font-size: 16px;">
+                        <div style="text-align: left; width: 60.10%;">
+                            <tr><center><t t-esc="o.company_id.name"/></center></tr>
+                            <tr><center><t t-esc="o.company_id.street"/></center></tr>
+                            <tr><center>Telp. <t t-esc="o.company_id.phone"/></center></tr>
+                            <tr><center>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</center></tr>
+                        </div>
+                        <div style="text-align: left; width: 60.10%; margin-top:2%;">
+                            <tr>
+                                <td>Customer</td>
+                                <td>:</td>
+                                <td><span t-field="o.partner_id.name"/></td>
+                            </tr>
+                        </div>
+                        <div style="text-align: left; width: 60.10%;">
+                            <tr>
+                                <td>Tgl/Jam</td>
+                                <td>:</td>
+                                <td><span t-esc="o.date_invoice.strftime('%d %B %Y')"/></td>
+                            </tr>
+                        </div>
+                        <div style="text-align: left; width: 60.10%;">
+                            <tr><center>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</center></tr>
+                        </div>
+                        <div class="row">
+                            <div style="-webkit-flex: 1; -ms-flex: 1; flex: 1; padding: 3px; width: 60.10%;">
+                                <table style="border: 1px solid white;">
+                                    <tr t-foreach="o.invoice_line_ids" t-as="line" style="padding: 5px; border: 1px solid white;">
+                                        <td style="width: 20.05%; padding: 8px; text-align: left; border: 1px solid white;">
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td style="width: 20%; padding: 8px; text-align: right; border: 1px solid white; background-color: white;">
+                                            <span t-field="line.quantity"/> <span t-field="line.uom_id.name"/>
+                                        </td>
+                                        <td style="width: 30%; padding: 8px; text-align: right; border: 1px solid white; background-color: white;">
+                                            @ <span t-field="line.price_unit"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="text-align: left; width: 60.10%;">
+                            <tr>
+                                <center>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</center>
+                            </tr>
+                            <table style="border: 1px solid white;">
+                                <tr style="padding: 5px; border: 1px solid white;">
+                                    <strong><h2>
+                                        <td style="width: 50%; padding: 8px; text-align: right; border: 1px solid white;">TOTAL</td>
+                                        <td style="width: 5%; padding: 8px; text-align: right; border: 1px solid white; background-color: white;">:</td>
+                                        <td style="width: 10%; padding: 8px; text-align: left; border: 1px solid white; background-color: white;"><span t-field="o.amount_total"/></td>
+                                    </h2></strong>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+ 
+ 
+</odoo>

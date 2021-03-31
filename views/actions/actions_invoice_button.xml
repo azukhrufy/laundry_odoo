@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <!-- Button Report Receipt Invoice -->
+        <record id="invoice_form_receipt" model="ir.ui.view">
+            <field name="name">account.invoice.from.receipt></field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <button name="action_invoice_draft" position="after">
+                    <button name="print_receipt" string="Print Receipt" type="object" states="paid" class="btn-primary"/>
+                </button>
+        
+                <button name="action_invoice_sent" position="replace">
+                    <button name="action_invoice_sent" string="Send &amp; Print" type="object" invisible="True"/>
+                </button>
+                <button name="action_invoice_sent" position="replace">
+                    <button name="action_invoice_sent" string="Send &amp; Print" type="object" invisible="True"/>
+                </button>
+                <button name="preview_invoice" position="replace">
+                    <button name="preview_invoice" type="object" string="Preview" invisible="True"/>
+                </button>
+                <button name="%(account.action_account_invoice_refund)d" position="replace">
+                    <button name="%(account.action_account_invoice_refund)d" type='action' string='Add Credit Note' groups="account.group_account_invoice" invisible="True"/>
+                </button>
+            </field>
+        </record>
+    
+    </data>
+    
+
+</odoo>

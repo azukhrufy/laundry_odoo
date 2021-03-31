@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_laundry_order" model="report.paperformat">
+            <field name="name">Paper Format Custom Order</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">80</field>
+            <field name="page_width">80</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">3</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <report
+            id="action_laundry_order"
+            string="Print Order"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="laundry_odoo.report_laundry_order"
+            name="laundry_odoo.report_laundry_order"
+            paperformat="laundry_odoo.paperformat_laundry_order"
+            print_report_name="('Order - %s' % (object.name))"/>
+
+        <report
+            id="action_laundry_label"
+            string="Laundry Order Label"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="laundry_odoo.report_laundry_label"
+            name="laundry_odoo.report_laundry_label"
+            print_report_name="('Label - %s' % (object.name))"/>
+
+        <record id="paperformat_laundry_receipt" model="report.paperformat">
+            <field name="name">Paper Format Custom Receipt</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">80</field>
+            <field name="page_width">83</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">3</field>
+            <field name="dpi">80</field>
+        </record>
+        
+        
+        <report
+            id="action_report_receipt"
+            string="Print Receipt"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="laundry_odoo.report_laundry_receipt"
+            name="laundry_odoo.report_laundry_receipt"
+            paperformat="laundry_odoo.paperformat_laundry_receipt"
+            print_report_name="('Receipt - %s' % (object.number))"/>
+
+    </data>
+</odoo>

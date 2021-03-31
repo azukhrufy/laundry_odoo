@@ -1,0 +1,13 @@
+<odoo>
+  <data>
+    <!-- Menuitem Laundry -->
+    <menuitem id="laundry_menubar" name="Laundry" web_icon="laundry_odoo,static/description/icon.png"/>
+    <menuitem id="laundry_menuitem" name="Laundry" parent="laundry_menubar"/>
+    <menuitem id="laundry_order_submenu" name="Laundry Order" parent="laundry_menuitem" action="laundry_order_action"/>
+
+    <!-- Menuitem Configuration -->
+    <menuitem id="config_menuitem" name="Configuration" parent="laundry_menubar"/>
+    <menuitem id="product_submenu" name="Products" parent="config_menuitem" action="sale.product_template_action"/>
+    <menuitem id="customer_submenu" name="Customers" parent="config_menuitem" action="base.action_partner_form"/>
+  </data>
+</odoo>
